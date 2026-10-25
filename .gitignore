@@ -1,0 +1,16 @@
+node_modules/
+dist/
+*.exe
+__pycache__/
+*.log
+*.tmp
+run_err*.txt
+chatfish_*.txt
+chatfish_*.html
+test_*.py
+nekto_core.py
+ws_decrypt_client.py
+.env
+
+src/
+scripts/

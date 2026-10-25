@@ -1,0 +1,55 @@
+{
+  "name": "ctos",
+  "version": "1.0.3",
+  "description": "ctOS Tactical Voice Bridge & Audio Matrix",
+  "main": "src/main/main.js",
+  "scripts": {
+    "start": "electron .",
+    "protect": "node scripts/obfuscate.js",
+    "restore": "node scripts/restore.js",
+    "dist": "node scripts/obfuscate.js && electron-builder --win && node scripts/restore.js",
+    "dist:portable": "node scripts/obfuscate.js && electron-builder --win portable && node scripts/restore.js"
+  },
+  "dependencies": {
+    "axios": "^1.20.0",
+    "electron-updater": "^6.8.11",
+    "fix-webm-duration": "^1.0.6",
+    "socket.io-client": "^4.8.4",
+    "ws": "^8.22.0"
+  },
+  "devDependencies": {
+    "electron": "^33.2.1",
+    "electron-builder": "^25.1.8",
+    "javascript-obfuscator": "^5.9.0"
+  },
+  "build": {
+    "appId": "com.ctos.client",
+    "productName": "ctOS",
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "slaymuffin",
+        "repo": "ctos-client"
+      }
+    ],
+    "directories": {
+      "output": "dist"
+    },
+    "win": {
+      "icon": "ctOS.ico",
+      "sign": "./sign.js",
+      "target": [
+        "nsis",
+        "portable"
+      ]
+    },
+    "nsis": {
+      "oneClick": true,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": false,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "runAfterFinish": true
+    }
+  }
+}
